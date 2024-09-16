@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "unique-postman-id",
+		"name": "Friend Request API",
+		"description": "Collection for Friend Request and User Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"name\": \"John Doe\",\n    \"password\": \"securepassword\",\n    \"role\": \"READ\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/register/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"securepassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/search/?search=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "john"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Activity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/activity/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/users/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/users/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"blocked_user\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/block/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unblock User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"blocked_user\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/unblock/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"unblock"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friend Requests",
+			"item": [
+				{
+					"name": "Send Friend Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receiver\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/friends/request/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"friends",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Friend Request Action",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action\": \"accept\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/friends/request/1/action/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"friends",
+								"request",
+								"1",
+								"action"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Friend List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/friends/list/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"friends",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pending Friend Requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/friends/pending/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"friends",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "your_access_token_here",
+			"type": "string"
+		}
+	]
+}
